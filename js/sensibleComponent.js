@@ -1,6 +1,8 @@
 var Component = function (options) {
 	var self = this;
 
+	extend = require('extend');
+
 	// Use the private members for custom hidden setters and getters.
 	// An identifier for the component's current state.
 	var state = '';
@@ -69,7 +71,9 @@ var Component = function (options) {
 		enumerable: true
 	});
 
-	$.extend(this, defaults, options);
+	// $.extend(this, defaults, options);
+	self = extend(this, defaults)
+	self = extend(this, options)
 
 	// Extend does not trigger custom setters and getters. There are some properties that if defined on init the custom setter/getter is not called. make the assigment manually for these sensitive properties.
 	if (options && options.state) {

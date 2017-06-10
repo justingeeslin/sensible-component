@@ -71,6 +71,11 @@ var Component = function (options) {
 
 	$.extend(this, defaults, options);
 
+	// Extend does not trigger custom setters and getters. There are some properties that if defined on init the custom setter/getter is not called. make the assigment manually for these sensitive properties.
+	if (options && options.state) {
+		this.state = options.state
+	}
+
 	this.go = function(newState) {
 		this.state = newState;
 	}

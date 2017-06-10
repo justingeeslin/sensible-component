@@ -73,6 +73,21 @@ describe('Component', function() {
 
 		});
 
+    it('should call stateChange function when set state via options', function(done) {
+      var didCallStateChangeFx = false;
+      aComponent = new sensible.classes.Component({
+        state: 'Shredder',
+        el: $('<p id="turtles">Teenage Mutant Ninja Turtles</p>'),
+        stateChange : function(oldState, newState) {
+    			didCallStateChangeFx = true
+          expect(didCallStateChangeFx).toBe(true)
+          done()
+    		}
+      });
+
+
+		});
+
     it('should emit state change event', function(done) {
       var eventEmitted = false;
       aComponent.target.on('stateChange.sensible', function(e, oldState, newState) {

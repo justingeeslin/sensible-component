@@ -15,7 +15,6 @@ var Component = function (options) {
 		el : $(document.createDocumentFragment()),
 		stateChange : function(oldState, newState) {
 			self.log('Changing state from ' + oldState + ' to ' + newState);
-			self.target.trigger('stateChange.' + self.eventNamespace, [oldState, newState]);
 		},
 		preload: function() { },
 		postload: function() { },
@@ -68,6 +67,7 @@ var Component = function (options) {
 		get: function() { return state; },
 		set: function(newState) {
 			newState = self.statePreprocess(newState);
+			self.target.trigger('stateChange.' + self.eventNamespace, [state, newState]);
 			this.stateChange(state, newState)
 			state = newState;
 			return true

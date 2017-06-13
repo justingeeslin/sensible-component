@@ -73,6 +73,18 @@ describe('Component', function() {
 
 		});
 
+    it('should set state with a preprocess function', function() {
+      aComponent = new sensible.classes.Component({
+        state: 'April O`neal',
+        el: $('<p id="turtles">Teenage Mutant Ninja Turtles</p>'),
+        statePreprocess: function(s) {
+          return s.split('`')[0];
+        }
+      });
+      expect(aComponent.state).toBe("April O")
+
+		});
+
     it('should call stateChange function when set state via options', function(done) {
       var didCallStateChangeFx = false;
       aComponent = new sensible.classes.Component({

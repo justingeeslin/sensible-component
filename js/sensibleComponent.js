@@ -19,6 +19,9 @@ var Component = function (options) {
 		},
 		preload: function() { },
 		postload: function() { },
+		statePreprocess: function(state) {
+			return state;
+		},
 		// To avoid collisions and incase you want to namespace individual components
 		eventNamespace: 'sensible',
 		// Call render automatically upon construction becuse sometimes you just want to construct the thing. Disable if the component request data async and should not be show until it is loaded.
@@ -64,6 +67,7 @@ var Component = function (options) {
 	Object.defineProperty(this, 'state', {
 		get: function() { return state; },
 		set: function(newState) {
+			newState = self.statePreprocess(newState);
 			this.stateChange(state, newState)
 			state = newState;
 			return true

@@ -164,4 +164,12 @@ describe('Component', function() {
 
 		});
 
+    it('should destroy and empty the target', function() {
+      aComponent = new sensible.classes.Component({
+        el: $('<p id="cars">Porche</p>')
+      });
+      aComponent.destroy()
+      expect($('#cars').length).toBe(0);
+		});
+
 });

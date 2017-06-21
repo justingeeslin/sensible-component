@@ -96,6 +96,10 @@ var Component = function (options) {
 		self.postload();
 	}
 
+	this.destroy = function() {
+		self.target.empty();
+	}
+
 	// Call render automatically upon construction
 	if (this.autoRender) {
 		this.render()

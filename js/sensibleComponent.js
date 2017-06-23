@@ -67,7 +67,6 @@ var Component = function (options) {
 		get: function() { return state; },
 		set: function(newState) {
 			newState = this.statePreprocess(newState);
-			this.target.trigger('stateChange.' + this.eventNamespace, [state, newState]);
 			this.stateChange(state, newState)
 			state = newState;
 			return true

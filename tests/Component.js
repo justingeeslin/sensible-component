@@ -100,20 +100,6 @@ describe('Component', function() {
 
 		});
 
-    it('should emit state change event', function(done) {
-      var eventEmitted = false;
-      aComponent.target.on('stateChange.sensible', function(e, oldState, newState) {
-        eventEmitted = true;
-        expect(eventEmitted).toBe(true)
-        console.log(e);
-        expect(oldState !== undefined).toBe(true)
-        expect(newState).toBe("Ponies")
-        done()
-      })
-      aComponent.state = "Ponies";
-
-		});
-
     it('should set target as a string selector', function() {
       aComponent = new sensible.classes.Component({
         target: 'html',
@@ -129,26 +115,6 @@ describe('Component', function() {
         el: $('<p id="turtles">Teenage Mutant Ninja Turtles</p>')
       });
       expect(aComponent.target[0]).toBe($('html')[0])
-
-		});
-
-    it('should set a custom namespace for state change event', function(done) {
-      var myNamespace = 'sensitiveSkin';
-      aComponent = new sensible.classes.Component({
-        el: $('<p id="lotion">Jergins</p>'),
-        eventNamespace: myNamespace
-      });
-      var eventEmitted = false;
-
-      aComponent.target.on('stateChange.sensitiveSkin', function(e, oldState, newState) {
-        eventEmitted = true;
-        expect(eventEmitted).toBe(true)
-        console.log(e);
-        expect(oldState !== undefined).toBe(true)
-        expect(newState).toBe("Dark Wing Duck")
-        done()
-      })
-      aComponent.state = "Dark Wing Duck";
 
 		});
 

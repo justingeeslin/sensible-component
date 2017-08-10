@@ -66,9 +66,10 @@ var Component = function (options) {
 	Object.defineProperty(this, 'state', {
 		get: function() { return state; },
 		set: function(newState) {
+			var oldState = state;
 			newState = this.statePreprocess(newState);
-			this.stateChange(state, newState)
 			state = newState;
+			this.stateChange(oldState, newState)
 			return true
 		},
 		enumerable: true

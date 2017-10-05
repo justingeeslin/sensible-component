@@ -1,7 +1,6 @@
+var extend = require('extend');
 var Component = function (options) {
 	var self = this;
-
-	extend = require('extend');
 
 	// Use the private members for custom hidden setters and getters.
 	// An identifier for the component's current state.

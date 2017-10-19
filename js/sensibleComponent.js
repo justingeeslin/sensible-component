@@ -90,9 +90,11 @@ var Component = function (options) {
 	// Append the El with all of its markup and events to the targetEl
 	this.render = function() {
 		self.preload();
+		self.target.trigger('preload.' + self.eventNamespace);
 		self.log('Rendering..');
 		self.target.append(this.el);
 		self.postload();
+		self.target.trigger('postload.' + self.eventNamespace);
 	}
 
 	this.destroy = function() {

@@ -46,6 +46,38 @@ describe('Component', function() {
       expect(didPostload).toBe(true)
 		});
 
+    it('should trigger preload event on render', function(done) {
+      var didPreload = false;
+      aComponent = new sensible.classes.Component({
+        el: $('<p id="polly">Polly Pocket</p>'),
+      });
+
+      aComponent.target.on('preload.sensible', function() {
+        didPreload = true;
+        expect(didPreload).toBe(true)
+        done()
+      })
+
+      aComponent.render();
+
+		});
+
+    it('should trigger postload event on render', function(done) {
+      var didPostload = false;
+      aComponent = new sensible.classes.Component({
+        el: $('<p id="polly">Polly Pocket</p>'),
+      });
+
+      aComponent.target.on('postload.sensible', function() {
+        didPostload = true;
+        expect(didPostload).toBe(true)
+        done()
+      })
+
+      aComponent.render();
+
+		});
+
     it('should get/set state', function() {
       aComponent = new sensible.classes.Component({
         el: $('<p id="turtles">Teenage Mutant Ninja Turtles</p>')

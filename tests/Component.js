@@ -138,4 +138,18 @@ describe('Component', function() {
       expect($('#cars').length).toBe(0);
 		});
 
+    it('should allow destroy to be overridden', function(done) {
+      var customDestroyFired = false;
+      var aComponent = new sensible.classes.Component({
+        el: $('<p id="cars">Porche</p>'),
+        destroy: function() {
+          customDestroyFired = true;
+          expect(customDestroyFired).toBe(true);
+          done()
+        }
+      });
+      aComponent.destroy()
+
+		});
+
 });

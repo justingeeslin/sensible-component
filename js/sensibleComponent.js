@@ -20,6 +20,9 @@ var Component = function (options) {
 		statePreprocess: function(state) {
 			return state;
 		},
+		destroy: function() {
+			self.target.empty();
+		},
 		// To avoid collisions and incase you want to namespace individual components
 		eventNamespace: 'sensible',
 		// Call render automatically upon construction becuse sometimes you just want to construct the thing. Disable if the component request data async and should not be show until it is loaded.
@@ -95,10 +98,6 @@ var Component = function (options) {
 		self.target.append(this.el);
 		self.postload();
 		self.target.trigger('postload.' + self.eventNamespace);
-	}
-
-	this.destroy = function() {
-		self.target.empty();
 	}
 
 	// Call render automatically upon construction
